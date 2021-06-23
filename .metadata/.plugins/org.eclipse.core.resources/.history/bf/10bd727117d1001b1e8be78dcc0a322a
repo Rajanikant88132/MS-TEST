@@ -1,0 +1,5 @@
+package com.rajanikant.trial.user.VO;
+
+public class Department {
+
+}

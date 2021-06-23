@@ -1,0 +1,14 @@
+package com.rajanikant.trial.user.entity;
+
+import javax.persistence.Entity;
+
+@Entity
+public class User {
+	
+	private Long userId;
+	private String firstName;
+	private String lastName;
+	private String email;
+	
+
+}

@@ -1,0 +1,16 @@
+server:  port: 9191 
+
+spring: application:    name: API-GATEWAY
+ cloud:
+    gateway:
+      routes:
+      - id: USERSERVICE
+        uri: lb://USERSERVICE
+        predicates:
+          - Path: /users/**
+          args:
+            status: 401
+      - id: setstatusshortcut_route
+        uri: https://example.org
+        filters:
+        - SetStatus=401

@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: setstatus_route
+        uri: https://example.org
+        filters:
+        - name: SetStatus
+          args:
+            status: 401
+      - id: setstatusshortcut_route
+        uri: https://example.org
+        filters:
+        - SetStatus=401

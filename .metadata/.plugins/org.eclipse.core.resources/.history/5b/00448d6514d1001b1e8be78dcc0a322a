@@ -1,0 +1,7 @@
+package com.rajanikant.trial.user.repository;
+
+import org.springframework.data.jpa.repository.cdi.JpaRepositoryExtension;
+
+public class UserRepository extends JpaRepository<User,Long>{
+
+}

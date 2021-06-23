@@ -1,0 +1,33 @@
+package com.rajanikant.trial.user.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.rajanikant.trial.user.VO.ResponseTemplateVo;
+import com.rajanikant.trial.user.entity.User;
+import com.rajanikant.trial.user.repository.UserRepository;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	public User saveUser(User user)
+	{
+		
+		System.out.println("Inside User service.. Save ......");
+		return userRepository.save(user);
+	}
+
+	public ResponseTemplateVo getUserwithDepartment(Long userId) {
+		// TODO Auto-generated method stub
+		
+		ResponseTemplateVo repsonse=new ResponseTemplateVo();
+		User user=userRepository.findUserByUserId(userId);
+		return null;
+	}
+
+}

@@ -1,0 +1,37 @@
+package com.rajanikant.trial.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rajanikant.trial.entity.Department;
+import com.sun.tools.sjavac.Log;
+
+import lombok.extern.slf4j.Slf4j;
+
+import com.rajanikant.trial.department.service.DepartmentService;
+
+@RestController
+@RequestMapping("/departments")
+@Slf4j
+public class DepartmentController {
+
+	@Autowired
+	private DepartmentService departmentService;
+
+	public Department getDepartmentById(Long departmentId)
+	{
+		Log.info("getDepartment the Department in Controller....");
+		return departmentService.getDepartment(departmentId);
+	}
+
+	@PostMapping("/")
+	public Department saveDepartment(Department department)
+	{
+
+		Log.info("Save Department the Department in Controller....");
+		return departmentService.saveDepartment(department);
+	}
+}
+

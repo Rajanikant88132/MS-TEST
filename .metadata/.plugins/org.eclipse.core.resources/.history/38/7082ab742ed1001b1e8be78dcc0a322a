@@ -1,0 +1,11 @@
+server.port=9191
+spring.application.name=API-GATEWAY
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+eureka.instance.hostname=localhost
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+
+spring.cloud.gateway.discovery.locator.route-id-prefix=USERSERVICE
+spring.cloud.gateway.discovery.locator.url-expression=lb://USERSERVICE
+spring.cloud.gateway.discovery.locator.predicates[0].name: Path
+spring.cloud.gateway.discovery.locator.predicates[0].args[pattern]: "'/'+users+'/**'"

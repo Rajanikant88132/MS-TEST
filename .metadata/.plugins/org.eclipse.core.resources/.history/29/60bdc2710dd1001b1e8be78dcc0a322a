@@ -1,0 +1,33 @@
+package com.rajanikant.trial.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.rajanikant.trial.entity.Department;
+
+
+import lombok.extern.slf4j.Slf4j;
+
+import com.rajanikant.trial.repository.DepartmentRepository;
+
+@Service
+@Slf4j
+public class DepartmentService {
+
+	@Autowired
+	private DepartmentRepository departmentRepository;
+
+	public Department saveDepartment(Department department)
+	{
+		log.info("Saving the Department in DepartmentSErvice");
+		return departmentRepository.save(department);
+	}
+	
+	public Department getDepartment(Long departmentId)
+	{
+		log.info("getDepartment the Department in DepartmentSErvice");
+		return departmentRepository.getById(departmentId);
+	}
+
+}
+
