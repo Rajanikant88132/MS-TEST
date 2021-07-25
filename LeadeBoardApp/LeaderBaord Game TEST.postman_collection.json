@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "71d0c77b-8c70-45e6-8e30-13e7a2267bf8",
+		"name": "LeaderBaord Game TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "save Player",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playerName\": \"Rajanikant3\",\r\n    \"playerAge\": \"Yadav\",\r\n    \"emailId\": \"ryadav@gmail.com\",\r\n    \"totalScore\": \"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5003/LeaderBoard/player/Saveplayer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"LeaderBoard",
+						"player",
+						"Saveplayer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Player",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5003/LeaderBoard/player/getplayerById/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"LeaderBoard",
+						"player",
+						"getplayerById",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token For Player",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playerId\": 66,\r\n    \"playerName\": \"Rajanikansdsdtdssds21\",\r\n    \"playerAge\": \"54546\",\r\n    \"emailId\": \"ryadav@ssdds.cossm\",\r\n    \"totalScore\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5003/LeaderBoard/token/getToken/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"LeaderBoard",
+						"token",
+						"getToken",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playerId\": 33,\r\n    \"playerName\": \"Rajanikansdsdtdssds21\",\r\n    \"playerAge\": \"54546\",\r\n    \"emailId\": \"ryadav@ss.cosm\",\r\n    \"totalScore\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5003/LeaderBoard/token/GenerateToken/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"LeaderBoard",
+						"token",
+						"GenerateToken",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save Palindrom TEXT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"playerID\": 66,\r\n    \"tokenId\": 2,\r\n    \"accessToken\": \"20210724212914\",\r\n     \"text\": \"TET Sir, I demand, I am a maid named Iris TET\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5003/LeaderBoard/submission/SaveSubmission/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"LeaderBoard",
+						"submission",
+						"SaveSubmission",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Submission by Player",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tokenId\": 2,\r\n    \"accessToken\": \"20210724213116\",\r\n    \"playerID\": 33,\r\n    \"generateTimeStamp\": \"2021.07.24 21:31:16\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5003/LeaderBoard/submission/getSubmissionByPlayer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"LeaderBoard",
+						"submission",
+						"getSubmissionByPlayer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Top 10 Submussion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  leader-baord-app-t1:
+    image: leader-board-app-t1:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - /data/leader-board-app-t1
+    ports:
+      - "5003:8081"

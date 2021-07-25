@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Leader Board Application</title>
+<style>
+div.container {
+	width: 100%;
+	border: none;
+	margin: auto;
+}
+
+header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	color: white;
+	background: linear-gradient(to right, #ffa402, #ff5661, #ff279c);
+	clear: left;
+	text-align: center;
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 0px;
+	color: white;
+	background: linear-gradient(to right, #ffa402, #ff5661, #ff279c);
+	clear: left;
+	text-align: center;
+}
+
+nav {
+	float: right;
+	max-width: 160px;
+	height: 134px;
+	padding: 1em;
+	border: solid #333
+}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+nav ul a {
+	text-decoration: none;
+}
+
+article {
+	padding: 1em;
+}
+
+#divPush {
+	height: 100px; /*Push must be same height as Footer */
+}
+</style>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header>
+		<table border="10" width="100%">
+		   <tr>
+		   <th width="10%"><button name="HOME PAGE"/><a href="/">HOME PAGE</a></button></th>
+		   <th width="90%"><h1>Leader Board Application</h1>
+		   </tr>
+		</table>
+	</header>
+	<div class="container">
+
+		<!--<nav>
+<h1>Navigation</h1>
+<ul>
+ <li><a href="#">Selection 1</a></li>
+ <li><a href="#">Selection 2</a></li>
+ <li><a href="#">Selection 3</a></li>
+</ul>
+</nav>
+-->
+		<div id="divPush"></div>
+		<div th:if="${message}">
+			<h2 th:text="${message}" />
+		</div>
+		<div id="divPush"></div>
+		<div>
+
+		<table border="10">
+			<tr>
+				<th>Player Id </th>
+				<th>Player Name</th>
+				<th>Email Id </th>
+				<th>Access Token </th>
+				<th>Submission Id</th>
+				<th>Text</th>
+				<th>Score</th>
+			</tr>
+			<div th:if="${not #lists.isEmpty(submissionDetails)}">
+				<tr th:each="submissionDetail : ${submissionDetails}">
+				 
+					<td th:text="${submissionDetail.Player.playerId}" />
+					<td th:text="${submissionDetail.Player.playerName}" />
+					<td th:text="${submissionDetail.Player.emailId}" />
+					<td th:text="${submissionDetail.Submission.accessToken}" />
+					<td th:text="${submissionDetail.Submission.submissionId}" />
+					<td th:text="${submissionDetail.Submission.text}" />
+					<td th:text="${submissionDetail.Submission.score}" />
+					
+				</tr>
+
+			</div>
+		</table>
+
+		</form>
+	</div>
+	<footer>@Rajanikant Yadav</footer>
+</body>
+</html>

@@ -1,0 +1,24 @@
+2021-07-24 21:04:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'ss' (PLAYER: ""PLAYER_AGE"" INT)"; SQL statement:
+insert into player (email_id, player_age, player_name, total_score, player_id) values (?, ?, ?, ?, ?) [22018-200]
+2021-07-24 21:42:14 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SEELCT[*] * FROM SUBMISSION"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+seelct * from submission [42001-200]
+2021-07-25 02:05:14 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM TOKEN
+
+
+SELECT[*] * FROM PLAYER"; SQL statement:
+select * from token
+
+
+select * from player [42000-200]
+2021-07-25 02:05:18 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM TOKEN
+
+
+SELECT[*] * FROM PLAYER"; SQL statement:
+select * from token
+
+
+select * from player [42000-200]
