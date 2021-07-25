@@ -1,12 +1,20 @@
 version: '3'
 
 services:
-  leader-baord-app-t1:
-    image: leader-board-app-t1:1
+  leader-baord-app-t2:
+    image: leader-board-app-t2:1
     build:
       context: ./
       dockerfile: Dockerfile
     volumes:
-      - /data/leader-board-app-t1
+      - /data/leader-board-app-t2
     ports:
-      - "5003:8081"
+      - "5003"
+
+networks:
+  my-project-network:
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "172.20.0.1"
+    ipam:
+      config:
+        - subnet: "172.20.0.0/16"
