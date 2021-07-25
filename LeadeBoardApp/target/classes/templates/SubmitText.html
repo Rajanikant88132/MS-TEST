@@ -1,0 +1,126 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Leader Board Application</title>
+<style>
+div.container {
+	width: 73%;
+	border: none;
+	margin: auto;
+}
+
+header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	color: white;
+	background: linear-gradient(to right, #ffa402, #ff5661, #ff279c);
+	clear: left;
+	text-align: center;
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 0px;
+	color: white;
+	background: linear-gradient(to right, #ffa402, #ff5661, #ff279c);
+	clear: left;
+	text-align: center;
+}
+
+nav {
+	float: right;
+	max-width: 160px;
+	height: 134px;
+	padding: 1em;
+	border: solid #333
+}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+nav ul a {
+	text-decoration: none;
+}
+
+article {
+	padding: 1em;
+}
+
+#divPush {
+	height: 100px; /*Push must be same height as Footer */
+}
+</style>
+<script type="text/javascript" src="scripts.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+	<div class="container">
+
+		<header>
+			<table border="10" width="100%">
+		   <tr>
+		   <th width="10%"><button name="HOME PAGE"/><a href="/">HOME PAGE</a></button></th>
+		   <th width="90%"><h1>Leader Board Application</h1></th>
+		   </tr>
+		</table>
+		</header>
+
+		<!--<nav>
+<h1>Navigation</h1>
+<ul>
+ <li><a href="#">Selection 1</a></li>
+ <li><a href="#">Selection 2</a></li>
+ <li><a href="#">Selection 3</a></li>
+</ul>
+</nav>
+-->
+		<div id="divPush"></div>
+		<div th:if="${message}">
+			<h2 th:text="${message}" />
+		</div>
+		<div id="divPush"></div>
+		<div>
+			<form method="POST" enctype="multipart/form-data" action="/UI/submitText">
+				<table border="10">
+					<tr>
+					<th colspan="2"> Submit You Text !</th>
+                     <th></th>
+				</tr>
+				<tr>
+					<td>Player Id</td>
+					<td><input type="text" name="playerId" /></td>
+				</tr>
+				<tr>
+					<td>Token Id </td>
+					<td><input type="text" name="tokenId" /></td>
+				</tr>
+				<tr>
+					<td>Input Palindrome Text </td>
+					<td><input type="text" name="text" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" ><input type="submit" name="Submit" /></td>
+					<td ></td>
+				</tr>
+					</table>
+			</form>
+		</div>
+<div id="divPush"></div>
+
+
+		<footer>@Rajanikant Yadav</footer>
+
+	</div>
+
+</body>
+</html>
