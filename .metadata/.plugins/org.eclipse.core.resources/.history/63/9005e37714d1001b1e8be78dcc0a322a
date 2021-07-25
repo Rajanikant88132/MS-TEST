@@ -1,7 +1,0 @@
-package com.rajanikant.trial.user.repository;
-
-import org.springframework.data.jpa.repository.*;
-
-public class UserRepository extends JpaRepository<User,Long>{
-
-}

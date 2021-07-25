@@ -19,13 +19,16 @@ public class DepartmentService {
 
 	public Department saveDepartment(Department department)
 	{
-		System.out.println("Save the Department in Service....");
+		System.out.println("Save the Department in Service...."+department);
+		
 		return departmentRepository.save(department);
 	}
 	
 	public Department findDepartmentByDepartmentId(Long departmentId)
 	{
-		System.out.println("getDepartment the Department in Service....");
+		System.out.println("getDepartment the Department in Service...."+departmentRepository.findDepartmentByDepartmentId(departmentId));
+		
+		
 		return departmentRepository.findDepartmentByDepartmentId(departmentId);
 	}
 

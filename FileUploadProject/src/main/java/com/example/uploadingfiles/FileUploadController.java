@@ -1,6 +1,7 @@
 package com.example.uploadingfiles;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.uploadingfiles.db.JdbcSQLServerConnection;
 import com.example.uploadingfiles.storage.StorageFileNotFoundException;
 import com.example.uploadingfiles.storage.StorageService;
 
@@ -35,14 +37,34 @@ public class FileUploadController {
 	@GetMapping("/")
 	public String listUploadedFiles(Model model) throws IOException {
 
-		model.addAttribute("files", storageService.loadAll().map(
-				path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
-						"serveFile", path.getFileName().toString()).build().toUri().toString())
-				.collect(Collectors.toList()));
+		
+		  List<FileDetail> fileList=JdbcSQLServerConnection.loadFromDB();
+		  model.addAttribute("fileDetails", fileList); 
+		  return "uploadForm2";
 
-		return "uploadForm";
+		 
+		
+		/*
+		 * model.addAttribute("files", storageService.loadAll().map( path ->
+		 * MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
+		 * "serveFile", path.getFileName().toString()).build().toUri().toString())
+		 * .collect(Collectors.toList()));
+		 * 
+		 * return "uploadForm";
+		 */
 	}
 
+	
+	@GetMapping("/loadUploadedFiles")
+	public String loadUploadedFiles(Model model) throws IOException {
+
+		List<FileDetail> fileList=JdbcSQLServerConnection.loadFromDB();
+
+		model.addAttribute("fileDetails", fileList);
+		return "uploadForm2";
+	}
+	
+	
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
 	public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
@@ -50,6 +72,40 @@ public class FileUploadController {
 		Resource file = storageService.loadAsResource(filename);
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 				"attachment; filename=\"" + file.getFilename() + "\"").body(file);
+	}
+
+	@PostMapping("/uploadFiles")
+	public String handleFileUpload(@RequestParam("customerListfile") MultipartFile file,
+			@RequestParam("FyiMsgfile") MultipartFile file2,@RequestParam("submitter") String submitter,
+			@RequestParam("description")String description,
+			@RequestParam("application") String application,  
+			@RequestParam("incident") String incident,
+			RedirectAttributes redirectAttributes) {
+
+		storageService.store(file);
+		storageService.store(file2);
+		System.out.println("submitter :"+submitter);
+		System.out.println("description :"+description );
+		System.out.println("application :"+application);
+		System.out.println("incident :"+incident);
+		String formatedCustFileName="CUSTOMERLIST_"+application+"_"+incident+".csv";
+		String formatedMsgFileName="FYIMSG_"+application+"_"+incident+".csv";
+		String status="Received";
+		JdbcSQLServerConnection.uploadToDB(file.getOriginalFilename(),
+				                           formatedCustFileName,
+				                           file2.getOriginalFilename(),
+				                           formatedMsgFileName,
+				                           application,
+				                           description,
+				                           incident,
+				                           submitter,
+				                           status);
+	
+
+		redirectAttributes.addFlashAttribute("message",
+				"You successfully uploaded " + file.getOriginalFilename() + "!");
+
+		return "redirect:/";
 	}
 
 	@PostMapping("/")
@@ -62,7 +118,6 @@ public class FileUploadController {
 
 		return "redirect:/";
 	}
-
 	@ExceptionHandler(StorageFileNotFoundException.class)
 	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
 		return ResponseEntity.notFound().build();

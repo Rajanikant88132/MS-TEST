@@ -1,6 +1,0 @@
-package com.rajanikant.trial.department.entity;
-
-@Entity
-public class Department {
-
-}

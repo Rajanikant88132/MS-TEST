@@ -1,9 +1,0 @@
-package com.rajanikant.trial.department.controller;
-
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class DepartmentController {
-
-	private Department departmentService;
-}

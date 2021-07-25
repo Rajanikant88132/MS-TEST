@@ -6,8 +6,8 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="D:\JavaDevelopment\SpringBoot\workspace\service-registry"/>
 			<item value="D:\JavaDevelopment\SpringBoot\workspace"/>
+			<item value="D:\JavaDevelopment\SpringBoot\workspace\service-registry"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -16,6 +16,19 @@
 			<item value="[groupId].[artifactId]"/>
 			<item value="[groupId].[artifactId]-[version]"/>
 			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="LeaderBoardApp"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="LeaderBoardApp"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
 </section>

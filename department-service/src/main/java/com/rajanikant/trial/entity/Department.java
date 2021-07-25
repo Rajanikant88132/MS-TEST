@@ -22,4 +22,8 @@ public class Department {
 	private String departmentAddress;
 	private String departmentCode;
 	
+	public String toString()
+	{
+		return " DEPART :"+departmentName+" ,"+departmentAddress+","+departmentCode+","+departmentId;
+	}
 }

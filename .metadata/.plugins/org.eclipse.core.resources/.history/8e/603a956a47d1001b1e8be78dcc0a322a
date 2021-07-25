@@ -1,5 +1,0 @@
-package com.rajanikant.trial.cloud.gateway;
-
-public class FallbackMethodController {
-
-}
