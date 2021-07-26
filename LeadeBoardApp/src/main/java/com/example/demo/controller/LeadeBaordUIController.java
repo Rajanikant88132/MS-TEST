@@ -238,7 +238,7 @@ public class LeadeBaordUIController {
 			
 			redirectAttributes.addFlashAttribute("message",
 					"Text '" + submission.getText() + "' submmittes SuccessFully. Score for this submissio is : "+submission.getScore());
-			
+			submissionService.SaveSubmission(submission);
 			return  "redirect:/";
 		}
 		else
